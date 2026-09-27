@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KyleJilian — Phone Cases</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="brand">
+      <div class="logo">KJ</div>
+      <div>
+        <h1>KYLEJILIAN</h1>
+        <p>QUALITY • STYLE • PROTECTION</p>
+      </div>
+    </div>
+
+    <div class="account-cart">
+      <button class="account">♙ <span>Log in / Sign up</span></button>
+      <button class="cart-btn" onclick="toggleCart()">🛒 <span id="cartCount">0</span></button>
+    </div>
+
+    <div class="search-wrap">
+      <span>⌕</span>
+      <input id="search" type="search" placeholder="Search items — e.g. magnetic case, matte case" oninput="renderProducts()">
+    </div>
+  </header>
+
+  <nav class="categories">
+    <button class="active" onclick="filterProducts('All', this)">ALL PRODUCTS</button>
+    <button onclick="filterProducts('Magnetic Case', this)">MAGNETIC CASE</button>
+    <button onclick="filterProducts('Matte Case', this)">MATTE CASE</button>
+    <button onclick="filterProducts('Accessories', this)">ACCESSORIES</button>
+  </nav>
+
+  <main>
+    <section class="section-title">
+      <span></span>
+      <h2>PHONE CASES</h2>
+    </section>
+
+    <div id="products" class="products"></div>
+  </main>
+
+  <div id="cartPanel" class="cart-panel">
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+      <button onclick="toggleCart()">✕</button>
+    </div>
+    <div id="cartItems"></div>
+    <div class="cart-footer">
+      <div class="total"><span>Total</span><strong id="cartTotal">₱0</strong></div>
+      <button class="checkout" onclick="openCheckout()">ORDER NOW</button>
+    </div>
+  </div>
+
+  <div id="overlay" class="overlay" onclick="toggleCart()"></div>
+
+  <div id="checkoutModal" class="modal">
+    <div class="modal-card">
+      <button class="close" onclick="closeCheckout()">✕</button>
+      <h2>Complete Your Order</h2>
+      <p class="muted">Enter your details and we'll prepare your order.</p>
+      <form onsubmit="placeOrder(event)">
+        <label>Full Name
+          <input id="name" required placeholder="Your name">
+        </label>
+        <label>Phone Number
+          <input id="phone" required placeholder="09XXXXXXXXX">
+        </label>
+        <label>Delivery Address
+          <textarea id="address" required placeholder="House/Street, Barangay, City"></textarea>
+        </label>
+        <label>Payment Method
+          <select id="payment">
+            <option>Cash on Delivery</option>
+            <option>GCash</option>
+          </select>
+        </label>
+        <button class="checkout" type="submit">PLACE ORDER</button>
+      </form>
+      <div id="success" class="success"></div>
+    </div>
+  </div>
+
+  <footer>
+    <strong>KYLEJILIAN</strong>
+    <p>Phone cases made for everyday style and protection.</p>
+  </footer>
+
+<script src="script.js"></script>
+</body>
+</html>
